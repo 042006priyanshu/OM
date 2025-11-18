@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #80cbc4);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #004d40;
+      font-size: 30px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* ✅ Responsive Grid Layout */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🌌 Popup Overlay */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* 🖼️ Large Image */
+    .popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ❌ Exit Button */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background-color: #ff5252;
+      border: none;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s;
+    }
+
+    .close-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    /* 📱 Mobile Adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 24px;
+      }
+      .gallery img {
+        height: 150px;
+      }
+      .close-btn {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+      }
+    }
+    .back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.back-btn:hover {
+    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.back-btn:active {
+    transform: scale(0.97);
+}
+
+  </style>
+</head>
+<body>
+  <h1>📸 My Image Gallery</h1>
+  <a href="index.html" class="back-btn">← Back</a>
+
+
+  <div class="gallery">
+    <img src="image/IMG-20251105-WA0003.jpg" alt="Image 1" onclick="openPopup(this.src)">
+    <img src="image/IMG-20251105-WA0004.jpg" alt="Image 2" onclick="openPopup(this.src)">
+    <img src="image/IMG-20251105-WA0005.jpg" alt="Image 3" onclick="openPopup(this.src)">
+    <img src="image/IMG-20251105-WA0008.jpg" alt="Image 4" onclick="openPopup(this.src)">
+    <img src="image/IMG-20251105-WA0009.jpg" alt="Image 5" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.01.46_b8d61451.jpg" alt="Image 6" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.03.04_7df19d32.jpg" alt="Image 7" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.06.04_8bab6cb8.jpg" alt="Image 8" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.06.05_9302ed17.jpg" alt="Image 9" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.13.33_f3bff803.jpg" alt="Image 10" onclick="openPopup(this.src)">
+    <img src="image/Aluminium-Window.webp" alt="Image 11" onclick="openPopup(this.src)">
+    <img src="image/aluminum-office-partition-250x250.webp" alt="Image 12" onclick="openPopup(this.src)">
+    <img src="image/background.webp" alt="Image 13" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.08.04_1b155dec.jpg" alt="Image 14" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.08.05_9a57e274.jpg" alt="Image 15" onclick="openPopup(this.src)">
+    <img src="image/WhatsApp Image 2025-11-05 at 09.08.05_0a8f2977.jpg" alt="Image 16" onclick="openPopup(this.src)">
+  </div>
+
+  <!-- Popup Section -->
+  <div class="popup" id="popup">
+    <button class="close-btn" onclick="closePopup()">✖</button>
+    <img id="popupImg" src="">
+  </div>
+
+  <script>
+    function openPopup(src) {
+      document.getElementById("popupImg").src = src;
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Close popup when clicking outside image
+    document.getElementById("popup").addEventListener("click", function (e) {
+      if (e.target === this) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>
